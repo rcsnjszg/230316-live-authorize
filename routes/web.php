@@ -22,6 +22,9 @@ Route::get("/articles/create",[ArticleController::class,"create"])
 Route::get("/articles/{id}/edit",[ArticleController::class,"edit"])
     ->name("article.edit");
 
+Route::post("/articles",[ArticleController::class,"store"])
+    ->name("article.store");
+
 Route::get("/register",[\App\Http\Controllers\RegisterController::class,"create"])
     ->name("register.create");
 Route::post("/register",[\App\Http\Controllers\RegisterController::class,"store"])
