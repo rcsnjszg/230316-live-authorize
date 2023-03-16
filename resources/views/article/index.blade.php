@@ -8,5 +8,6 @@
     
     @foreach($articles as $article)
         <h2>{{$article->title}}</h2>
+        <a href="{{route("article.edit",['id' => $article->id])}}" class="btn btn-primary @cannot('update-article',$article) disabled @endcannot">Szerkesztés</a>
     @endforeach
 @endsection    
