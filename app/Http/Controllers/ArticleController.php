@@ -16,6 +16,15 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        Gate::authorize("create-article");
+        
+        return view("article.create",[
+            "title" => "Új cikk létrehozása",
+        ]);
+    }
+
     public function edit($id)
     {
         $article = Article::findOrFail($id);

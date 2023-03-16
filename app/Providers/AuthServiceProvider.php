@@ -33,5 +33,11 @@ class AuthServiceProvider extends ServiceProvider
                 ? Response::allow()
                 : Response::deny("Csak a saját cikkedet szerkesztheted");
         });
+
+        Gate::define("create-article", function (User $user){
+            return in_array($user->role,["admin","root"])
+                ? Response::allow()
+                : Response::deny("Csak az admin vagy a root hozhat létre cikket");
+        });
     }
 }
