@@ -36,7 +36,8 @@ class AuthServiceProvider extends ServiceProvider
             // {
             //     return false;
             // }
-            return $article->user_id === $user;
+            
+            return $article->user_id === $user->id;
         });
     }
 }
