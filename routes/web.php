@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/",[ArticleController::class,"index"])->name("home");
 
+Route::get("/articles/{id}/edit",[ArticleController::class,"edit"])
+    ->name("article.edit");
+
 Route::get("/register",[\App\Http\Controllers\RegisterController::class,"create"])
     ->name("register.create");
 Route::post("/register",[\App\Http\Controllers\RegisterController::class,"store"])

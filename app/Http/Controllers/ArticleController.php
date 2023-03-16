@@ -14,4 +14,13 @@ class ArticleController extends Controller
             "articles" => Article::all(),
         ]);
     }
+
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+        return view("article.edit",[
+            "title" => $article->title . " szerkesztése",
+            "article" => $article,
+        ]);
+    }
 }
