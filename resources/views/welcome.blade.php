@@ -1,4 +1,4 @@
-@extends('layouts.vue')
+@extends('layouts.main')
 
 @section('content')
 <div id="app"></div>
