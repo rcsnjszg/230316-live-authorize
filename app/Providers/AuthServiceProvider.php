@@ -29,16 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define("update-article", function (User $user, Article $article){
-            if ($article->user_id === $user->id)
-            {
-                return Response::allow();
-            }
-            else 
-            {
-                return Response::deny("Csak a saját cikkedet szerkesztheted");
-            }
-            
-            
+            return ($article->user_id === $user->id)
+                ? Response::allow()
+                : Response::deny("Csak a saját cikkedet szerkesztheted");
         });
     }
 }
