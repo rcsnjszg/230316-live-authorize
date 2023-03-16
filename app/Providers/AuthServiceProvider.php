@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -28,16 +29,16 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define("update-article", function (User $user, Article $article){
-            // if ($article->user_id === $user->id)
-            // {
-            //     return true;
-            // }
-            // else 
-            // {
-            //     return false;
-            // }
+            if ($article->user_id === $user->id)
+            {
+                return Response::allow();
+            }
+            else 
+            {
+                return Response::deny("Csak a saját cikkedet szerkesztheted");
+            }
             
-            return $article->user_id === $user->id;
+            
         });
     }
 }
