@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('article', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string("tite",80);
+            $table->string("title",80);
             $table->text("content");
             $table->foreignId("user_id")->constrained();
             $table->timestamps();
