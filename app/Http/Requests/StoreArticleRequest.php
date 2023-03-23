@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,7 +15,7 @@ class StoreArticleRequest extends FormRequest
      */
     public function authorize()
     {
-        return Gate::allows("create-article");
+        return Gate::allows("create",Article::class);
     }
 
     /**
