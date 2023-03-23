@@ -43,7 +43,9 @@ class ArticlePolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array($user->role,["admin","root"])
+                ? Response::allow()
+                : Response::deny("Csak az admin vagy a root hozhat létre cikket");
     }
 
     /**

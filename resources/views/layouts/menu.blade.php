@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          @can("create-article")
+          @can("create",App\model\Article::class)
             <a class="nav-link" href="{{route("article.create")}}">Új cikk</a>
           @endcan
         </li>

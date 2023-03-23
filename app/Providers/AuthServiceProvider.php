@@ -27,11 +27,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Gate::define("create-article", function (User $user){
-            return in_array($user->role,["admin","root"])
-                ? Response::allow()
-                : Response::deny("Csak az admin vagy a root hozhat létre cikket");
-        });
     }
 }

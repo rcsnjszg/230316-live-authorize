@@ -20,7 +20,8 @@ class ArticleController extends Controller
 
     public function create()
     {
-        Gate::authorize("create-article");
+        // Gate::authorize("create",Article::class);
+        $this->authorize("create",Article::class);
 
         return view("article.create",[
             "title" => "Új cikk létrehozása",
