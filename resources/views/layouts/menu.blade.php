@@ -18,7 +18,11 @@
       
       </ul>
       <span class="navbar-text">
-        Üdv {{Auth::user()->name}}
+        @if(Auth::check())
+          Üdv {{Auth::user()->name}}
+        @else
+          Lépj be!
+        @endif
       </span>
     </div>
   </div>
