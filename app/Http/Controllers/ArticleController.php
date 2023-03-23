@@ -41,7 +41,8 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        Gate::authorize("update-article",$article);
+        // Gate::authorize("update",$article);
+        $this->authorize("update",$article);
         return view("article.edit",[
             "title" => $article->title . " szerkesztése",
             "article" => $article,

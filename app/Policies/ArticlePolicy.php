@@ -55,6 +55,9 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article)
     {
+        return ($article->user_id === $user->id)
+                ? Response::allow()
+                : Response::deny("Csak a saját cikkedet szerkesztheted");
     }
 
     /**
