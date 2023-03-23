@@ -27,5 +27,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Gate::define("admin",function(User $user) {
+            return (in_array($user->role,["admin","root"]))
+                ? Response::allow()
+                : Response::deny("Csak adminoknak!");
+        });
     }
 }
